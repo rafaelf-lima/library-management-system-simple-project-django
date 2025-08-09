@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Remoção{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h2>Confirmar Remoção</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Você tem certeza que deseja remover permanentemente o livro?</p>
+                <h4 class="text-center my-4">"{{ livro.titulo }}"</h4>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Atenção:</strong> Esta ação não pode ser desfeita.
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <a href="{% url 'livros:detalhes_livro' livro.id %}" class="btn btn-secondary me-md-2">Cancelar</a>
+                        <button type="submit" class="btn btn-danger">Sim, tenho certeza</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
