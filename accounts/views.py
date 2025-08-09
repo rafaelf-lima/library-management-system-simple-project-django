@@ -14,7 +14,7 @@ def login_view(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('obter_livros')
+                return redirect('livros:obter_livros')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
